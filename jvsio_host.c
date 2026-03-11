@@ -21,6 +21,7 @@ enum State {
   kStateReset,
   kStateResetWaitInterval,
   kStateReset2,
+  kStateResetWaitInterval2,
   kStateAddress,
   kStateAddressWaitResponse,
   kStateReadyCheck,
@@ -116,6 +117,7 @@ bool JVSIO_Host_run(void) {
       return false;
     case kStateConnected:
     case kStateResetWaitInterval:
+    case kStateResetWaitInterval2:
       // Wait til 500[ms] to operate the RESET.
       if (timeInRange(tick, JVSIO_Client_getTick(), kResetInterval)) {
         return false;
